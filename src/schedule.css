@@ -1,34 +1,85 @@
 /* Schedule.css */
 
-/* Container for Work C tasks */
+/* General Container Styling */
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Header Styling */
+h2 {
+  color: #333;
+  text-align: center;
+}
+
+/* Work A - Daily Tasks */
+h3 {
+  color: #4A90E2;
+  margin-top: 20px;
+}
+
+/* Work A Task Styling */
+p {
+  font-size: 18px;
+  color: #555;
+}
+
+/* Work B - Weekend Tasks */
+.work-b-container {
+  margin-top: 20px;
+}
+
+/* Work B Tasks Styling */
+h3.work-b {
+  color: #E94E77;
+}
+
+/* Work B Tasks Box Styling */
+.work-b-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+}
+
+/* Work C - Weekend Tasks */
 .work-c-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Work C Task Styling */
+.work-c-box {
+  background-color: #f0f8ff;
+  border: 1px solid #b0c4de;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effect for Work C Tasks */
+.work-c-box:hover {
+  background-color: #e6f7ff;
+  transform: scale(1.05);
+}
+
+/* Alert Styling */
+.alert {
+  color: #fff;
+  background-color: #d9534f; /* Red color for alert */
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .work-c-container {
+    grid-template-columns: 1fr;
   }
-  
-  /* Styling for each box */
-  .work-c-box {
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-  }
-  
-  /* Grid item positioning */
-  .bedroom1 {
-    grid-column: span 3;
-  }
-  
-  .bedroom2 {
-    grid-column: span 2;
-    grid-row: 2;
-  }
-  
-  .bedroom3 {
-    grid-column: span 3;
-    grid-row: 2;
-  }
-  
+}

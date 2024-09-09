@@ -1,4 +1,5 @@
 import React from 'react';
+import "./schedule.css";
 
 const Alerts = ({ selectedDate }) => {
   const isTrashDay = selectedDate.getDay() === 2 || selectedDate.getDay() === 5; // Tuesday or Friday
@@ -6,8 +7,8 @@ const Alerts = ({ selectedDate }) => {
 
   return (
     <div>
-      {isTrashDay && <p>Alert: Today is Trash Day!</p>}
-      {isRecycleDay && <p>Alert: Today is Recycling Day!</p>}
+      {isTrashDay && <p className="alert">Alert: Today is Trash Day!</p>}
+      {isRecycleDay && <p className="alert">Alert: Today is Recycling Day!</p>}
     </div>
   );
 };

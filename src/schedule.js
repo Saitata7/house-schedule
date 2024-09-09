@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import "./schedule.css";
 
 const names = {
@@ -98,26 +99,32 @@ const Schedule = ({ selectedDate }) => {
   const isWeekendDay = isWeekend(selectedDate);
 
   return (
-    <div>
+    <div className="container">
       <h2>Schedule for {selectedDate.toDateString()}</h2>
 
       {/* Work A - Daily Tasks */}
       <h3>Work A - Daily</h3>
-      <p>Dishes: {workASchedule[currentDay]?.name}</p>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        Dishes: {workASchedule[currentDay]?.name}
+      </motion.p>
 
       {/* Work B - Weekend Tasks */}
       {isWeekendDay && (
-        <>
-          <h3>Work B - Weekend Tasks</h3>
+        <div className="work-b-container">
+          <h3 className="work-b">Work B - Weekend Tasks</h3>
           {workBSchedule.find(task => task.day === currentWeekend) ? (
-            <>
+            <div className="work-b-box">
               <p>Hall Cleaning: {workBSchedule.find(task => task.day === currentWeekend)?.hall}</p>
               <p>Stove Cleaning: {workBSchedule.find(task => task.day === currentWeekend)?.stove}</p>
-            </>
+            </div>
           ) : (
-            <p>No Work B tasks assigned for this date.</p>
+            <div className="alert">No Work B tasks assigned for this date.</div>
           )}
-        </>
+        </div>
       )}
 
       {/* Work C - Weekend Tasks by Bedroom */}
@@ -126,24 +133,24 @@ const Schedule = ({ selectedDate }) => {
           <h3>Work C - Weekend Tasks</h3>
           {workCSchedule.find(task => task.day === currentWeekend) ? (
             <div className="work-c-container">
-              <div className="work-c-box bedroom1">
+              <motion.div className="work-c-box bedroom1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
                 <h4>Bedroom 1</h4>
                 <p>Bed Cleaning: {workCSchedule.find(task => task.day === currentWeekend)?.bedroom1}</p>
                 <p>Bathroom Cleaning: {workCSchedule.find(task => task.day === currentWeekend)?.bathroom1}</p>
-              </div>
-              <div className="work-c-box bedroom2">
+              </motion.div>
+              <motion.div className="work-c-box bedroom2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
                 <h4>Bedroom 2</h4>
                 <p>Bed Cleaning: {workCSchedule.find(task => task.day === currentWeekend)?.bedroom2}</p>
                 <p>Bathroom Cleaning: {workCSchedule.find(task => task.day === currentWeekend)?.bathroom2}</p>
-              </div>
-              <div className="work-c-box bedroom3">
+              </motion.div>
+              <motion.div className="work-c-box bedroom3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
                 <h4>Bedroom 3</h4>
                 <p>Bed Cleaning: {workCSchedule.find(task => task.day === currentWeekend)?.bedroom3}</p>
                 <p>Bathroom Cleaning: {workCSchedule.find(task => task.day === currentWeekend)?.bathroom3}</p>
-              </div>
+              </motion.div>
             </div>
           ) : (
-            <p>No Work C tasks assigned for this date.</p>
+            <div>No Work C tasks assigned for this date.</div>
           )}
         </>
       )}
