@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Schedule from './schedule';
 import Alerts from './alerts';
 import "./App.css";
@@ -8,8 +8,14 @@ const App = () => {
 
   // Function to handle date change
   const handleDateChange = (e) => {
-    setSelectedDate(new Date(e.target.value));
+    const newDate = new Date(e.target.value + 'T00:00:00');
+    setSelectedDate(newDate);
   };
+
+  useEffect(() => {
+    // Set selectedDate to today when component mounts
+    setSelectedDate(new Date());
+  }, []);
 
   return (
     <div className="App">
